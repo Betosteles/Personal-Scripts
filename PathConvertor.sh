@@ -30,9 +30,10 @@ function convert_to_linux() {
 
 function explore_to_path() {
 
-    local path="$1:-$PWD"
+    local path="${1:-$PWD}"
 
     if [[ -n "$path" && -d "$path" ]]; then
+        cd "$path" || exit 1
         explorer.exe .
         exit 0
     else
